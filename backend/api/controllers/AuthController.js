@@ -29,29 +29,29 @@ module.exports = {
                     user: usr.toJSON(),
                     token: token
                 })
-                console.log(res)
-                console.log("ed" + res)
 
+                console.log(usr)
 
-            }
-            let newUser = {};
-            newUser.facebookId = fbId;
-            newUser.name = name;
-            User.create(newUser).exec((err, newUser) => {
-                let payload = {
-                    sub: user.id,
-                    exp: moment().add(10, 'days').unix()
-                }
-                let token = jwt.encode(payload, "hjkdf");
-                res.status(200).send({
+            } else {
+                let newUser = {};
+                newUser.facebookId = fbId;
+                newUser.name = name;
+                User.create(newUser).exec((err, newUser) => {
 
-                    user: user.toJSON(),
-                    token: tokennpn
+                    let payload = {
+                        sub: newUser.id,
+                        exp: moment().add(10, 'days').unix()
+                    }
+                    let token = jwt.encode(payload, "hjkdf");
+                    res.status(200).send({
+
+                        user: newUser.toJSON(),
+                        token: tokennpn
+                    })
+
+                    console.log(newUser);
                 })
-                console.log(res)
-
-                console.log(newUser);
-            })
+            }
         });
 
 
