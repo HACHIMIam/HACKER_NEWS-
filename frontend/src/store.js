@@ -6,8 +6,42 @@ const LOGOUT = "LOGOUT";
 Vue.use(Vuex);
 export const store = new Vuex.Store({
     state: {
-        state: {
-            isLoggedIn: !!localStorage.getItem('lbUser')
+
+        isLoggedIn: !!localStorage.getItem('token')
+
+
+    },
+    mutations: {
+        [LOGIN](state) {
+            state.pending = true;
+        },
+        [LOGIN_SUCCESS](state) {
+            state.isLoggedIn = true;
+            state.pending = false;
+        },
+        [LOGOUT](state) {
+            state.isLoggedIn = false;
         }
     },
+
+    actions: {
+        login({ commit }, creds) {
+            commit(LOGIN); // show spinner
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    commit(LOGIN_SUCCESS);
+                    resolve();
+                }, 1000);
+            });
+        },
+        logout({ commit }) {
+            localStorage.removeItem("token");
+            commit(LOGOUT);
+        }
+    },
+    getters: {
+        isLoggedIn: state => state.isLoggedIn
+    }
+
+
 })

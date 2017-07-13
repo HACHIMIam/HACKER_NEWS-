@@ -1,5 +1,7 @@
 <template>
   <div class="hello">
+
+
 <div class="jumbotron">
   <h1>welcome</h1>
   <p>login</p>
@@ -37,28 +39,33 @@ export default {
   methods:{
   onSignInSuccess (response,req) {
       let vm=this
+      this.$store.dispatch("login").then(()=>{
+        this.$router.push('/home')
+      });
       FB.api('/me', res => {
       this.$http.post(vm.url,{name:res.name,id:res.id}).then( (response) => {
+      localStorage.setItem('name',res.name);
+      localStorage.setItem('token',response.body.token);
 
-        console.log(response.body.token)
       },(error)=>{
         console.log(error)
       })
       })
-  //     this.$http.post(this.action, data)
-  // .then( (response) => {
-  //   this.handleSuccess(response);
-  // }, (error) => {
-  //   this.handleError(error);
-  // });
 
     },
 
     onSignInError (error) {
-      console.log('OH NOES', error)
-    }
+
+    },
+
+
+
+  },
+   computed:{
+
   }
   }
+
 
 
 

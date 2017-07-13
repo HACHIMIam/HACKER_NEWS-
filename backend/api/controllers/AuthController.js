@@ -55,10 +55,6 @@ module.exports = {
         });
 
 
-        // if yes, get the user information object.
-        // store them in the database.
-        // generate jwt.
-        // send it to the client.
-        // else return bad request.
+
     }
 };
