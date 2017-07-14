@@ -24,7 +24,7 @@ module.exports = {
                     sub: usr.id,
                     exp: moment().add(10, 'days').unix()
                 }
-                let token = jwt.encode(payload, "hjkdf");
+                let token = jwt.encode(payload, "yooi");
                 res.status(200).send({
                     user: usr.toJSON(),
                     token: token
@@ -42,7 +42,8 @@ module.exports = {
                         sub: newUser.id,
                         exp: moment().add(10, 'days').unix()
                     }
-                    let token = jwt.encode(payload, "hjkdf");
+                    let token = jwt.encode(payload, "yooi");
+
                     res.status(200).send({
 
                         user: newUser.toJSON(),

@@ -17,7 +17,6 @@ import VueRouter from 'vue-router'
 import { store } from './store.js'
 
 
-
 const routes = [
   { path: '/login', component: Hello },
   { path: '/home', component: Home }
@@ -53,6 +52,7 @@ export default {
   components: {
     Hello
   },
+
   methods:{
     logout() {
      this.$store.dispatch('logout');

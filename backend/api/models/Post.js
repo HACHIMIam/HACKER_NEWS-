@@ -10,6 +10,7 @@ module.exports = {
     attributes: {
         title: { type: 'string', required: true },
         body: { type: 'string', required: true },
+        author: { type: 'string', required: true },
         comments: [{ body: { type: 'string' }, autor: { model: 'user' } }],
         rating: { type: "Number" }
 

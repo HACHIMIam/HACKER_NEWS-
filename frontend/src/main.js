@@ -8,7 +8,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueRouter from 'vue-router'
 import SimpleVueValidation from 'simple-vue-validator'
-
+Vue.use(SimpleVueValidation)
 Vue.use(FBSignInButton)
 
 Vue.config.productionTip = false
@@ -19,14 +19,13 @@ Vue.use(VueRouter)
 Vue.http.options.emulateJSON = true;
 new Vue({
     el: '#app',
+    VueRouter,
 
 
     template: '<App/>',
     components: { App },
     http: {
         root: '/root',
-        headers: {
-            Authorization: 'Basic YXBpOnBhc3N3b3Jk'
-        }
+
     }
 })
