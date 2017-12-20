@@ -42,7 +42,9 @@ export default {
       this.$store.dispatch("login").then(()=>{
         this.$router.push('/home')
       });
+
       FB.api('/me', res => {
+      console.log(FB.getAccessToken())
       this.$http.post(vm.url,{name:res.name,id:res.id}).then( (response) => {
       localStorage.setItem('name',res.name);
       localStorage.setItem('token',response.body.token);

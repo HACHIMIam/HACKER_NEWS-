@@ -14,7 +14,7 @@
 import Hello from './components/Hello'
 import Home from './components/home'
 import VueRouter from 'vue-router'
-import { store } from './store.js'
+import { store } from './store/store.js'
 
 
 const routes = [
@@ -26,7 +26,7 @@ const router = new VueRouter({
   routes
 });
 router.beforeEach((to, from, next) => {
-  if( to.path=='/home' ){
+if( to.path=='/home' ){
       if(localStorage.getItem('token')){
             next()
       }
@@ -39,13 +39,6 @@ router.beforeEach((to, from, next) => {
   }
 }
 )
-
-
-
-
-
-
-
 export default {
   name: 'app',
   router,store,
@@ -65,7 +58,6 @@ export default {
   }
 }
 </script>
-
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
